@@ -1,18 +1,17 @@
 class Solution(object):
 
-    def twoSum(self, nums, target):
+    def two_sum(nums, target):
+        left = 0
+        right = len(nums) - 1
 
-        # Create an empty dictionary
-        num_dict = {}
-        # Iterate through the list of integers
-        for i, num in enumerate(nums):
-            # Check if the target minus the current integer is in the dictionary
-            if target - num in num_dict:
-                # If it is, return the indices of the two integers
-                return [num_dict[target - num], i]
-            # If not, add the current integer and its index to the dictionary
-            num_dict[num] = i
-            # If no solution is found, return None
+        while left < right:
+            current_sum = nums[left] + nums[right]
+            if current_sum == target:
+                return [left, right]
+            elif current_sum < target:
+                left += 1
+            else:
+                right -= 1
         return None
 
 
